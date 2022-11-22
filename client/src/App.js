@@ -1,12 +1,13 @@
-import React from "react";
-import { Header } from "./components/Header.js";
-import { Balance } from "./components/Balance.js";
-import { IncomeExpense } from "./components/IncomeExpense.js";
-import { TransactionList } from "./components/TransactionList.js";
-import { AddTransaction } from "./components/AddTransaction.js";
+import React from 'react';
+import { Header } from './components/Header';
+import { Balance } from './components/Balance';
+import { IncomeExpenses } from './components/IncomeExpense';
+import { TransactionList } from './components/TransactionList';
+import { AddTransaction } from './components/AddTransaction';
 
-import { GlobalProvider } from "./components/context/GlobalState.js";
-import "./App.css";
+import { GlobalProvider } from './context/GlobalState';
+
+import './App.css';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Header />
       <div className="container">
         <Balance />
-        <IncomeExpense />
+        <IncomeExpenses />
         <TransactionList />
         <AddTransaction />
       </div>
