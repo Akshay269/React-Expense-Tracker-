@@ -12,6 +12,10 @@ connectDB();
 
 app.use(express.json())//json data k saaath khel nhi paunga mai iske bina
 
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'));
+}
+
 app.get("/", (req, res) => res.send('Hello'));
 
 app.use('/api/v1/transactions',transactions);
