@@ -7,34 +7,20 @@ const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
 
-
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  );
-}
-
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-
-
+const app = express();
 connectDB();
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "./client/build/index.html"))
+);
+
+app.use(morgan("dev"));
 
 const transactions = require("./routes/transactions");
 
-const app = express();
-
-app.use(express.json());
-
-
-
 app.use("/api/v1/transactions", transactions);
-
-
 
 const PORT = process.env.PORT || 5000;
 
